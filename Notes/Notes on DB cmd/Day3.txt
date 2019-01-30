@@ -1,0 +1,89 @@
+                             Relational Database
+ database name: db_news
+
+ table1: tb_admin
+ id
+ username
+ name
+ email
+ contact
+ created_date
+ last_login
+ created_by
+
+
+
+//create table
+create table tb_admin(
+id int primary key auto_increment,
+username varchar(100) unique not null,
+name varchar(100) not null,
+email varchar(100) unique not null,
+contact varchar(10) not null,
+created_date datetime not null,
+last_login datetime null,
+created_by varchar(100) null,
+foreign key (created_by) references tb_admin(username) on update cascade);
+
+//add foreign key on alter table if not added on create table as above.
+alter table tb_name add foreign key (column_name) references table_name(column_name)
+
+//create table
+table2: category
+
+id,
+category_name,
+category_role,
+parent_category,
+image,
+description,
+created_date,
+created_by,
+modified_date,
+modified_by
+
+
+//table creation
+ create table tb_category(id int primary key auto_increment, category_name varchar(50) unique not null,
+ categpory_role boolean default 1, 
+ parent_category varchar(100)  null, 
+ image varchar(255) null, 
+ description varchar(100) null,
+ created_date datetime not null,
+ created_by varchar(100) not null,
+ modified_date datetime null, 
+ modified_by varcahr(100) null, 
+ foreign key (created_by) references tbl_admin(username) on update cascade,
+ foreign key (modified_by) references tbl_admin(username) on update cascade,
+ foreign key (parent_category) references tbl_category(category_name) on update cascade on delete cascade);
+
+//create table
+table3: tbl_post
+[
+id
+title
+short_desc
+content
+image
+category
+[4 fields]
+]
+
+create TABLE tb_post(
+id int PRIMARY KEY AUTO_INCREMENT,
+title varchar(100) not null,
+short_desc varchar(100) not null,
+content text not null,
+image varchar(255) unique null,
+category varchar(100) not null,
+created_date datetime not null,
+created_by varchar(100) not null,
+modifed_date datetime null, 
+modified_by varchar(100) null,
+FOREIGN KEY (category) REFERENCES tb_category(category_name) on update cascade on delete cascade
+,FOREIGN KEY (created_by) REFERENCES tb_admin(username) on update cascade,
+FOREIGN KEY (modified_by) REFERENCES tb_admin(username) on update cascade); 
+
+// to drop foreign key here "tb_post_ibfk_2" is constraint that can be obtained by code <show create table tb_name;>
+
+alter table tb_post  drop foreign key tb_post_ibfk_2;   <- ibfk_2 indicates the column from which You want to drop foreign key

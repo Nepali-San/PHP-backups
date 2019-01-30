@@ -1,0 +1,22 @@
+1) Difference between print and echo.
+=> The differences are small: echo has no return value while print has a return value of 1 so it can be used in expressions. echo can take multiple parameters (although such usage is rare) while print can take one argument. echo is marginally faster than print.
+
+2) var_dump($variable)
+=> This functions returns the datatype and value of $variable.
+
+3) Arrays
+=> In PHP, there are three types of arrays:
+Indexed arrays - Arrays with a numeric index
+Associative arrays - Arrays with named keys
+Multidimensional arrays - Arrays containing one or more arrays
+
+4) DataTypes
+=> PHP supports the following data types:
+String
+Integer
+Float (floating point numbers - also called double)
+Boolean
+Array
+Object
+NULL
+Resource

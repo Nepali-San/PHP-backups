@@ -1,0 +1,183 @@
+
+CMD prompt as Admin window:
+-------------------------------------------------------------------------------
+Microsoft Windows [Version 10.0.10586]
+(c) 2015 Microsoft Corporation. All rights reserved.
+
+C:\Windows\System32>cd..
+
+C:\Windows>cd..
+
+C:\>cd xampp/mysql/bin
+
+C:\xampp\mysql\bin> mysql -h localhost -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 2
+Server version: 10.1.22-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database hello;    //new database named hello
+Query OK, 1 row affected (0.00 sec)
+
+MariaDB [(none)]> show databases;
++--------------------+
+| Database           |
++--------------------+
+| db_assignment      |
+| db_data            |
+| db_just            |
+| db_news            |
+| db_school          |
+| hello              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| phpmyadmin         |
+| test               |
++--------------------+
+11 rows in set (0.01 sec)
+
+MariaDB [(none)]> use hello;
+Database changed
+MariaDB [hello]>
+-------------------------------------------------------------------------------
+
+
+//database connection
+mysql -h localhost - u root -p
+
+//display all database list
+show databases;
+
+//to create database
+create database databasename;
+
+// to show list of databases
+show databases;
+
+//to use database
+use databasename;
+
+//to show table
+show tables;
+
+//to create table
+create table table_name(id int primary key auto_increment,name varchar(50) not null, contact varchar(10) unique not null,bio_data text null,status boolean default 1 );
+
+//to see the column properties in table
+     describe table_name;
+(or) show columns from table_name;
+
+//to insert value into table
+insert into table_name(name,contact,bio_data,status) values('abc','9857034789','long bio_data','1');
+
+//to retrieve data
+select * from table_name;                           <- * cause to display every attributes.
+select name,status from table_name;                 <- only name and status is displayed.
+select *from table_name where id = '1';             <- all details of student whose id is 1.
+select name,status from table_name where id = '1';  <- name and status of student whose id is 1.
+select distinct name from table_name;               <- Displays the only one name if there are same name (like two students with name Ram, but only one time Ram is displayed)  
+select *from table_name where (id%2) = 0;           <- display all attributes of even id.
+
+
+//to delete table data
+delete from table_name where id='1';
+delete from table_name where id>'4';
+
+
+//to insert multiple data (name of table here is "table_student")
+insert into table_student(name,contact,bio_data,status)values('abc','9857034789','long bio_data','1'),
+('bac','3847384787','short bio_data','0');
+
+
+//update table data
+update table_student set name='ramesh' ,age = '3' where id='1';
+
+
+//change table column property
+alter table table_student modify column bio_data varchar(255) null;
+
+
+//change column title (eg: facullty to faculty in a table teacher)
+alter table teacher change column facullty  faculty varchar(20) ;
+
+
+// to rename a table;
+rename table db_name.tb_name to tb_new_name;
+
+
+//Steps to rename a database 
+------------------------------------------------------------------------------
+:::::suppose old name is db_news and you want it to rename as db_news2:::::
+:::::suppose tables are tb_admin and tb_post in db_news:::::
+
+1) create a new database (db_news2)
+2) transfer the content of old database (db_news) to new database(db_news2)
+    << Now db_news is empty and db_news2 contains the tables>>
+3) delete old database(db_news)
+
+<commands>
+
+create database db_news2;
+rename table db_news.tb_admin to db_news2.tb_admin,db_news.tb_post to db_news2.tb_post;
+drop database db_news;
+
+-------------------------------------------------------------------------------
+
+
+//to drop/delete a column of a table (status = column name)
+alter table table_student drop column status;
+
+
+//add a column
+alter table table_student add column_name int not null;
+
+
+//drop a database
+drop database db_name;
+
+
+//drop/delete a table
+drop table table_name;
+
+
+//some datatypes that can be used are:
+varchar(size),int,date,time,datetime,text,boolean etc.
+
+
+#Challenge 1
+
+1> Create database db_school
+2> create tables admin,teacher,student
+
+teacher => [
+id
+name
+contact
+address
+faculty
+status
+]
+
+student=>[
+id
+name
+contact
+address
+faculty
+status
+]
+
+admin=>[
+id
+name
+username
+email
+contact
+created_date
+last_login
+]

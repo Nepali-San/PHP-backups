@@ -1,0 +1,22 @@
+//to create tb_student
+create table tb_student( id int primary key auto_increment, name varchar(50) not null,contact varchar(10) unique not null,address varchar(255) not null,faculty varchar(8) not null,status boolean default 0);
+
+//to create tb_teacher
+create table tb_teacher(id int primary key auto_increment, name varchar(50) not null,contact varchar(10) not null,address varchar(255) not null,faculty varchar(8)  not null,status boolean default 0);
+
+//to create tb_admin
+ create table tb_admin(id int primary key auto_increment, name varchar(50) not  null, username varchar(50) unique not null, email varchar(100) unique not null,contact varchar(10) not null,created_date datetime not null,last_login datetime null);
+
+ //insert data into those tables
+
+ insert into tb_admin(name,username,email,contact,created_date)values
+ ('ram','raam','ram@mail.com','9807016099','2017-6-20 11:20:2'),
+ ('hari','hary','hari@mail.com','9804470560','2017-6-20 11:20:2'),
+ ('ramesh','ramesh','ramesh@mail.com','9805706040','2017-6-20 11:20:2'),
+ ('suresh','suresh','suresh@mail.com','980701610','2017-6-20 11:20:2')
+
+ //alter table change created_date/last_login datetime to date
+ alter table #table_name modify column #column_name #datatype; 
+
+//to see how you created  a table;
+show create table tb_name;
